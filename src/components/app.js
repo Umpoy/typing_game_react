@@ -1,14 +1,35 @@
-import React from 'react';
-import '../assets/css/app.css';
-import logo from '../assets/images/logo.svg';
+import React, { Component } from "react";
 
-const App = () => (
-    <div>
-        <div className="app">
-            <img src={logo} className="logo rotate"/>
-            <h1>Welcome to React</h1>
-        </div>
-    </div>
-);
+
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            words: [
+                "cat",
+                "dog",
+                "tree"
+            ]
+        }
+    }
+    handleKeyPress = (event) => {
+        console.log(event.key)
+    }
+
+    render() {
+        console.log(this.state)
+        const map = this.state.words.map((words) =>
+            <div>{words}</div>
+        )
+        return (
+            <div>
+                <div >{map}</div>
+                <div>
+                    <input type="text" id="one" onKeyPress={this.handleKeyPress} />
+                </div>
+            </div>
+        )
+    }
+}
 
 export default App;
