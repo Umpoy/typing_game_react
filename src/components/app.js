@@ -13,7 +13,17 @@ class App extends Component {
         }
     }
     handleKeyPress = (event) => {
-        console.log(event.key)
+        console.log(event.key);
+        if (this.state.words[0] == '') {
+            let hold = this.state.words.slice(1);
+            this.state.words = hold;
+        }
+        //console.log(this.state.words[0][0])
+        if (this.state.words[0][0] == event.key) {
+            let hold = this.state.words[0].replace(this.state.words[0][0], '')
+            this.state.words[0] = hold
+            console.log(this.state)
+        }
     }
 
     render() {
