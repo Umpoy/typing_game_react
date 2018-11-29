@@ -1,23 +1,25 @@
 import React, { Component } from "react";
+import WordsList from './words_list';
+const randomWords = require('random-words');
 
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            words: [
-                "cat",
-                "dog",
-                "tree"
-            ]
+            words: randomWords(25)
         }
 
         this.handleKeyPress = this.handleKeyPress.bind(this);
-        this.map = this.state.words.map((word) =>
-            <div>{word}</div>
-        )
+    }
+    componentWillMount() {
+        this.map = this.state.words.map((words) => <WordsList word={words} />)
+    }
+    componentWillUpdate() {
+        this.map = this.state.words.map((words) => <WordsList word={words} />)
 
     }
+
     handleKeyPress(event) {
         console.log(event.key)
         if (this.state.words[0] == '') {
