@@ -50,10 +50,10 @@ class App extends Component {
 
         return (
             <div>
-                <div >{this.map}</div>
                 <div>
                     <input type="text" id="one" onKeyPress={this.handleKeyPress} />
                 </div>
+                <div >{this.map}</div>
             </div>
         )
     }
