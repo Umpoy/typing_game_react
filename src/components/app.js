@@ -7,7 +7,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            words: randomWords(25)
+            words: randomWords(25),
+            input: null
         }
 
         this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -21,7 +22,7 @@ class App extends Component {
     }
 
     handleKeyPress(event) {
-        console.log(event.key)
+        console.log('this: ', this)
         if (this.state.words[0] == '') {
             if (event.key !== ' ') {
                 console.log('need to press space bar');
@@ -29,18 +30,19 @@ class App extends Component {
             }
             let hold = this.state.words.slice(1);
             this.setState({
-                words: hold
+                words: hold,
+                input: ''
             })
         }
         if (this.state.words[0][0] == event.key) {
-
             let holdArray = this.state.words
             console.log('holdArray: ', holdArray)
             let hold = holdArray[0].replace(this.state.words[0][0], '');
             holdArray[0] = hold
             console.log(holdArray)
             this.setState({
-                words: holdArray
+                words: holdArray,
+                input: null
             })
             console.log(this.state.words)
         }
@@ -51,7 +53,7 @@ class App extends Component {
         return (
             <div>
                 <div>
-                    <input type="text" id="one" onKeyPress={this.handleKeyPress} />
+                    <input type="text" id="one" onKeyPress={this.handleKeyPress} value={this.state.input} />
                 </div>
                 <div >{this.map}</div>
             </div>
