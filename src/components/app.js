@@ -1,28 +1,19 @@
 import React, { Component } from "react";
-import WordsList from './words_list';
 const randomWords = require('random-words');
-
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            words: randomWords(25),
+            words: randomWords(100),
             input: null
         }
 
         this.handleKeyPress = this.handleKeyPress.bind(this);
     }
-    componentWillMount() {
-        this.map = this.state.words.map((words) => <WordsList word={words} />)
-    }
-    componentWillUpdate() {
-        this.map = this.state.words.map((words) => <WordsList word={words} />)
-
-    }
 
     handleKeyPress(event) {
-        console.log('this: ', this)
+        // console.log('this: ', this)
         if (this.state.words[0] == '') {
             if (event.key !== ' ') {
                 console.log('need to press space bar');
@@ -36,15 +27,14 @@ class App extends Component {
         }
         if (this.state.words[0][0] == event.key) {
             let holdArray = this.state.words
-            console.log('holdArray: ', holdArray)
             let hold = holdArray[0].replace(this.state.words[0][0], '');
             holdArray[0] = hold
-            console.log(holdArray)
+
             this.setState({
                 words: holdArray,
                 input: null
-            })
-            console.log(this.state.words)
+            });
+
         }
     }
 
@@ -55,7 +45,7 @@ class App extends Component {
                 <div>
                     <input type="text" id="one" onKeyPress={this.handleKeyPress} value={this.state.input} />
                 </div>
-                <div >{this.map}</div>
+                <div>{this.state.words.join(' ')}</div>
             </div>
         )
     }
