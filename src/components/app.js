@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 const randomWords = require('random-words');
 
+const oneLine = {
+    float: 'left',
+    // margin: '0 5px',
+    //display: 'inline',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis'
+}
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -45,7 +54,7 @@ class App extends Component {
                 <div>
                     <input type="text" id="one" onKeyPress={this.handleKeyPress} value={this.state.input} />
                 </div>
-                <div>{this.state.words.join(' ')}</div>
+                <div style={oneLine}>{this.state.words.join(' ')}</div>
             </div>
         )
     }
