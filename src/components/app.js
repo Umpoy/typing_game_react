@@ -12,7 +12,11 @@ class App extends Component {
             input: null,
             wordsCounted: 0,
             style: {
-                color: 'black'
+                // color: 'black',
+                float: 'left',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis'
             }
         }
         this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -21,30 +25,43 @@ class App extends Component {
     handleKeyPress(event) {
         if (this.state.words[0] == '' || event.key == ' ') {
             if (event.key !== ' ') {
-                console.log('need to press space bar');
+                this.setState({
+                    style: {
+                        color: 'red',
+                        float: 'left',
+                        overflow: 'hidden',
+                        whiteSpace: 'nowrap',
+                        textOverflow: 'ellipsis'
+                    }
+                });
                 return
             }
 
             let hold = this.state.words.slice(1);
             this.setState({
                 words: hold,
-                input: ''
-            })
-            this.setState({
+                input: '',
                 wordsCounted: this.state.wordsCounted += 1,
                 style: {
-                    color: 'black'
+                    color: 'black',
+                    float: 'left',
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap',
+                    textOverflow: 'ellipsis'
                 }
             });
-
         }
         if ((this.state.words[0][0] !== event.key) && (event.key !== ' ')) {
 
             this.setState({
                 style: {
-                    color: 'red'
+                    color: 'red',
+                    float: 'left',
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap',
+                    textOverflow: 'ellipsis'
                 }
-            })
+            });
         }
         if (this.state.words[0][0] == event.key) {
             let holdArray = this.state.words
