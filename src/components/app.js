@@ -11,6 +11,7 @@ class App extends Component {
         this.state = {
             words: randomWords(100),
             input: null,
+            correct: 0,
             wordsCounted: 0,
             style: {
                 color: 'black',
@@ -22,7 +23,9 @@ class App extends Component {
 
     handleKeyPress(event) {
         if (this.state.words[0] == '' || event.key == ' ') {
-
+            if (this.state.words[0] == '') {
+                this.setState({ correct: this.state.correct += 1 })
+            }
             if (event.key !== ' ') {
                 this.setState({
                     style: {
@@ -68,6 +71,7 @@ class App extends Component {
     render() {
         return (
             <div className="app">
+                <div className="counter">{this.state.correct} / {this.state.wordsCounted}</div>
                 <div>
                     <input type="text" id="one" onKeyPress={this.handleKeyPress} value={this.state.input} />
                 </div>
