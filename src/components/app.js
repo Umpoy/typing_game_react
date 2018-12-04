@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import WordsList from './wordsList';
+import '../assets/css/app.css';
+
 const randomWords = require('random-words');
-
-
 
 class App extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             words: randomWords(100),
             input: null,
@@ -15,11 +16,13 @@ class App extends Component {
                 color: 'black',
             }
         }
+
         this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     handleKeyPress(event) {
         if (this.state.words[0] == '' || event.key == ' ') {
+
             if (event.key !== ' ') {
                 this.setState({
                     style: {
@@ -39,6 +42,7 @@ class App extends Component {
                 }
             });
         }
+
         if ((this.state.words[0][0] !== event.key) && (event.key !== ' ')) {
 
             this.setState({
@@ -47,6 +51,7 @@ class App extends Component {
                 }
             });
         }
+
         if (this.state.words[0][0] == event.key) {
             let holdArray = this.state.words
             let hold = holdArray[0].replace(this.state.words[0][0], '');
@@ -61,9 +66,8 @@ class App extends Component {
     }
 
     render() {
-
         return (
-            <div>
+            <div className="app">
                 <div>
                     <input type="text" id="one" onKeyPress={this.handleKeyPress} value={this.state.input} />
                 </div>
