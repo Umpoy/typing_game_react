@@ -12,14 +12,10 @@ class App extends Component {
             input: null,
             wordsCounted: 0,
             style: {
-                color: 'green'
+                color: 'black'
             }
         }
         this.handleKeyPress = this.handleKeyPress.bind(this);
-        // setTimeout(function () {
-        //     background.backgroundColor = 'green'
-        // }, 2000)
-
     }
 
     handleKeyPress(event) {
