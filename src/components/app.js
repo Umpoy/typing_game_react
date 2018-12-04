@@ -35,7 +35,10 @@ class App extends Component {
                 input: ''
             })
             this.setState({
-                wordsCounted: this.state.wordsCounted += 1
+                wordsCounted: this.state.wordsCounted += 1,
+                style: {
+                    color: 'black'
+                }
             });
 
         }
