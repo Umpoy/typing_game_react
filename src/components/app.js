@@ -13,7 +13,6 @@ class App extends Component {
     }
 
     handleKeyPress(event) {
-        // console.log('this: ', this)
         if (this.state.words[0] == '') {
             if (event.key !== ' ') {
                 console.log('need to press space bar');
@@ -45,7 +44,6 @@ class App extends Component {
                 <div>
                     <input type="text" id="one" onKeyPress={this.handleKeyPress} value={this.state.input} />
                 </div>
-                {/* <div style={oneLine}>{this.state.words.join(' ')}</div> */}
                 <WordsList words={this.state.words.join(' ')} />
             </div>
         )
