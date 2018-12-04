@@ -12,11 +12,7 @@ class App extends Component {
             input: null,
             wordsCounted: 0,
             style: {
-                // color: 'black',
-                float: 'left',
-                overflow: 'hidden',
-                whiteSpace: 'nowrap',
-                textOverflow: 'ellipsis'
+                color: 'black',
             }
         }
         this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -28,10 +24,6 @@ class App extends Component {
                 this.setState({
                     style: {
                         color: 'red',
-                        float: 'left',
-                        overflow: 'hidden',
-                        whiteSpace: 'nowrap',
-                        textOverflow: 'ellipsis'
                     }
                 });
                 return
@@ -44,10 +36,6 @@ class App extends Component {
                 wordsCounted: this.state.wordsCounted += 1,
                 style: {
                     color: 'black',
-                    float: 'left',
-                    overflow: 'hidden',
-                    whiteSpace: 'nowrap',
-                    textOverflow: 'ellipsis'
                 }
             });
         }
@@ -56,10 +44,6 @@ class App extends Component {
             this.setState({
                 style: {
                     color: 'red',
-                    float: 'left',
-                    overflow: 'hidden',
-                    whiteSpace: 'nowrap',
-                    textOverflow: 'ellipsis'
                 }
             });
         }

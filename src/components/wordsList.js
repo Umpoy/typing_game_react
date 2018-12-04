@@ -1,14 +1,8 @@
 import React from 'react';
-
-const wordsList = {
-    float: 'left',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis'
-}
+import '../assets/css/wordsList.css'
 
 const WordsList = (props) => {
-    return <h1 style={props.style}> {props.words}</h1 >
+    return <h1 style={props.style} className='wordsList'> {props.words}</h1 >
 }
 
 export default WordsList;
