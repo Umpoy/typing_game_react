@@ -1,6 +1,6 @@
 import React from 'react';
 
-const oneLine = {
+const wordsList = {
     float: 'left',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
@@ -8,7 +8,7 @@ const oneLine = {
 }
 
 const WordsList = (props) => {
-    return <h1 style={oneLine}>{props.words}</h1>
+    return <h1 style={props.style}> {props.words}</h1 >
 }
 
 export default WordsList;

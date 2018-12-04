@@ -2,26 +2,49 @@ import React, { Component } from "react";
 import WordsList from './wordsList';
 const randomWords = require('random-words');
 
+
+
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             words: randomWords(100),
-            input: null
+            input: null,
+            wordsCounted: 0,
+            style: {
+                color: 'green'
+            }
         }
         this.handleKeyPress = this.handleKeyPress.bind(this);
+        // setTimeout(function () {
+        //     background.backgroundColor = 'green'
+        // }, 2000)
+
     }
 
     handleKeyPress(event) {
-        if (this.state.words[0] == '') {
+        if (this.state.words[0] == '' || event.key == ' ') {
             if (event.key !== ' ') {
                 console.log('need to press space bar');
                 return
             }
+
             let hold = this.state.words.slice(1);
             this.setState({
                 words: hold,
                 input: ''
+            })
+            this.setState({
+                wordsCounted: this.state.wordsCounted += 1
+            });
+
+        }
+        if ((this.state.words[0][0] !== event.key) && (event.key !== ' ')) {
+
+            this.setState({
+                style: {
+                    color: 'red'
+                }
             })
         }
         if (this.state.words[0][0] == event.key) {
@@ -33,8 +56,8 @@ class App extends Component {
                 words: holdArray,
                 input: null
             });
-
         }
+
     }
 
     render() {
@@ -44,8 +67,8 @@ class App extends Component {
                 <div>
                     <input type="text" id="one" onKeyPress={this.handleKeyPress} value={this.state.input} />
                 </div>
-                <WordsList words={this.state.words.join(' ')} />
-            </div>
+                <WordsList words={this.state.words.join(' ')} style={this.state.style} />
+            </div >
         )
     }
 }
