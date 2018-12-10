@@ -12,3 +12,8 @@
     left: 50%;
 
 }
+
+.container *{
+    box-sizing: border-box;
+    display: inline;
+}

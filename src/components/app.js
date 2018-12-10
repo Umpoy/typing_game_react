@@ -83,7 +83,6 @@ class App extends Component {
                 input: null,
                 charCount: this.state.charCount += 1
             });
-            console.log(this.state.charCount)
         }
 
     }
@@ -91,9 +90,13 @@ class App extends Component {
     render() {
         return (
             <div className="app">
-                <div className="timer">{this.state.timer}</div>
-                <div className="counter">{this.state.fixAccuracy === false ? '100' : ((this.state.correct / this.state.wordsCounted).toFixed(2) * 100)}% Accuracy</div>
-                <div className="charCount">{this.state.charCount} CPM</div>
+                <div className="container">
+                    <div className="timer">{this.state.timer} timer |</div>
+                    <div className="counter"> {this.state.fixAccuracy === false ? '100' : (parseInt((this.state.correct / this.state.wordsCounted).toFixed(2) * 100))}% Accuracy |</div>
+                    <div className="charCount"> {this.state.charCount} CPM | </div>
+                    <div className="wordsCount">{this.state.correct} WPM</div>
+                </div>
+
                 <div>
                     <input type="text" id="one" onKeyPress={this.handleKeyPress} value={this.state.input} />
                 </div>
