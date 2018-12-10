@@ -17,7 +17,8 @@ class App extends Component {
                 color: 'black',
             },
             timer: 60,
-            timerStart: false
+            timerStart: false,
+            fixAccuracy: false
         }
 
         this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -37,7 +38,9 @@ class App extends Component {
 
         if (this.state.words[0] == '' || event.key == ' ') { // when user hits space bar
             if (this.state.words[0] == '') {
-                this.setState({ correct: this.state.correct += 1 })
+                this.setState({
+                    correct: this.state.correct += 1
+                })
             }
             if (event.key !== ' ') {
                 this.setState({
@@ -55,7 +58,8 @@ class App extends Component {
                 wordsCounted: this.state.wordsCounted += 1,
                 style: {
                     color: 'black',
-                }
+                },
+                fixAccuracy: true
             });
         }
 
@@ -85,7 +89,7 @@ class App extends Component {
         return (
             <div className="app">
                 <div className="timer">{this.state.timer}</div>
-                <div className="counter">{this.state.timerStart === false ? '100% Accuracy' : ((this.state.correct / this.state.wordsCounted).toFixed(2) * 100) + '% Accuracy'}</div>
+                <div className="counter">{this.state.fixAccuracy === false ? '100% Accuracy' : ((this.state.correct / this.state.wordsCounted).toFixed(2) * 100) + '% Accuracy'}</div>
                 <div>
                     <input type="text" id="one" onKeyPress={this.handleKeyPress} value={this.state.input} />
                 </div>
