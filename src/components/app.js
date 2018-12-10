@@ -85,7 +85,7 @@ class App extends Component {
         return (
             <div className="app">
                 <div className="timer">{this.state.timer}</div>
-                <div className="counter">{this.state.correct} / {this.state.wordsCounted}</div>
+                <div className="counter">{this.state.timerStart === false ? '100% Accuracy' : ((this.state.correct / this.state.wordsCounted).toFixed(2) * 100) + '% Accuracy'}</div>
                 <div>
                     <input type="text" id="one" onKeyPress={this.handleKeyPress} value={this.state.input} />
                 </div>
