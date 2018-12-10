@@ -16,7 +16,7 @@ class App extends Component {
             style: {
                 color: 'black',
             },
-            timer: 5,
+            timer: 60,
             timerStart: false
         }
 
@@ -25,16 +25,17 @@ class App extends Component {
     }
 
     handleKeyPress(event) {
-        if (!this.state.timerStart) {
+        if (!this.state.timerStart) { // start of wpm timer
             this.setState({ timerStart: true });
             setInterval(() => {
                 this.setState({ timer: this.state.timer -= 1 });
             }, 1000)
             setTimeout(() => {
                 alert();
-            }, this.state.timer * 1001)
+            }, this.state.timer * 1000 + 10)
         }
-        if (this.state.words[0] == '' || event.key == ' ') {
+
+        if (this.state.words[0] == '' || event.key == ' ') { // when user hits space bar
             if (this.state.words[0] == '') {
                 this.setState({ correct: this.state.correct += 1 })
             }
@@ -58,7 +59,7 @@ class App extends Component {
             });
         }
 
-        if ((this.state.words[0][0] !== event.key) && (event.key !== ' ')) {
+        if ((this.state.words[0][0] !== event.key) && (event.key !== ' ')) { // when user hits the wrong key
 
             this.setState({
                 style: {
@@ -67,7 +68,7 @@ class App extends Component {
             });
         }
 
-        if (this.state.words[0][0] == event.key) {
+        if (this.state.words[0][0] == event.key) { // when user hits the right key
             let holdArray = this.state.words
             let hold = holdArray[0].replace(this.state.words[0][0], '');
             holdArray[0] = hold
